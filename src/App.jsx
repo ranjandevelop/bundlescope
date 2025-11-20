@@ -1,35 +1,41 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import "./App.css";
+
+// Custom Hooks
+import { useBundleSearch } from "./hooks/useBundleSearch";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [query, setQuery] = useState("");
+  const { data, loading, error } = useBundleSearch(query);
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <h1>Bundle Scope</h1>
+      <div
+        style={{
+          border: "1px solid",
+          display: "flex",
+          justifyContent: "center",
+          padding: "10px",
+        }}
+      >
+        <input
+          type={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Enter the package name"
+        />
+        {loading && <p>loading...</p>}
+        {error && <p>error: {error}</p>}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+      <div className="">
+        {data.map((info) => (
+          <li key={info.name}>
+            <span>{info.name}</span> - <span>v{info.version}</span>
+          </li>
+        ))}
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
