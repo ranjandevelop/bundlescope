@@ -47,7 +47,7 @@ const Hero = () => {
             ) : query.length < 2 ? (
               <div></div>
             ) : (
-              <div class="z-10 border rounded-lg shadow-lg w-100">
+              <div class="z-10 border rounded-lg shadow-lgw-[100%]">
                 <ul class="p-2 text-sm">
                   {data.map((info) => (
                     <li>
@@ -55,7 +55,7 @@ const Hero = () => {
                         href="#"
                         class="inline-flex items-center w-full p-2 hover:bg-slate-100 hover:text-heading rounded"
                       >
-                        {info.name}
+                        {info.name} v{info.version}
                       </a>
                     </li>
                   ))}
