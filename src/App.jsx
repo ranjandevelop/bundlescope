@@ -2,7 +2,7 @@ import "./App.css";
 
 // Components
 import { Container, Footer, Header } from "./components/index";
-import Hero from "./components/Hero/Hero";
+import BundleScope from "./components/BundleScope/BundleScope";
 import Notification from "./components/Notification/Notification";
 
 function App() {
@@ -11,39 +11,8 @@ function App() {
       <Container>
         <Notification />
         <Header />
-        <Hero />
+        <BundleScope />
       </Container>
-
-      {/*
-      <div
-        style={{
-          border: "1px solid",
-          display: "flex",
-          justifyContent: "center",
-          padding: "10px",
-        }}
-      >
-        <input
-          type={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Enter the package name"
-        />
-        {loading && <p>loading...</p>}
-        {error && <p>error: {error}</p>}
-      </div>
-      <div className="border">
-        {data.map((info) => (
-          <li
-            key={info.name}
-            onClick={() => updateInput({ info })}
-            style={{
-              cursor: "pointer",
-            }}
-          >
-            <span>{info.name}</span> - <span>v{info.version}</span>
-          </li>
-        ))}
-      </div> */}
     </>
   );
 }

@@ -1,7 +1,7 @@
 // Custom Hooks
 import { useState } from "react";
 import { useBundleSearch } from "../../hooks/useBundleSearch";
-const Hero = () => {
+const BundleScope = () => {
   const [query, setQuery] = useState("");
   const { data, loading, error } = useBundleSearch(query);
   function updateInput(info) {
@@ -52,7 +52,7 @@ const Hero = () => {
                   {data.map((info) => (
                     <li>
                       <a
-                        href="#"
+                        href="/package/:id/"
                         class="inline-flex items-center w-full p-2 hover:bg-slate-100 hover:text-heading rounded"
                       >
                         {info.name} v{info.version}
@@ -90,4 +90,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default BundleScope;
