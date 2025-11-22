@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
 import "./App.css";
 
-// Custom Hooks
-import { useBundleSearch } from "./hooks/useBundleSearch";
+// Components
+import { Container, Footer, Header } from "./components/index";
+import Hero from "./components/Hero/Hero";
+import Notification from "./components/Notification/Notification";
 
 function App() {
-  const [query, setQuery] = useState("");
-  const { data, loading, error } = useBundleSearch(query);
-  function updateInput(info) {
-    console.log(info.info.name, info.info.version);
-    // setQuery(info.info.name + info.info.name);
-  }
-
   return (
     <>
-      <h1>Bundle Scope</h1>
+      <Container>
+        <Notification />
+        <Header />
+        <Hero />
+      </Container>
+
+      {/*
       <div
         style={{
           border: "1px solid",
@@ -43,7 +43,7 @@ function App() {
             <span>{info.name}</span> - <span>v{info.version}</span>
           </li>
         ))}
-      </div>
+      </div> */}
     </>
   );
 }
