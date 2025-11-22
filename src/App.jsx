@@ -7,6 +7,10 @@ import { useBundleSearch } from "./hooks/useBundleSearch";
 function App() {
   const [query, setQuery] = useState("");
   const { data, loading, error } = useBundleSearch(query);
+  function updateInput(info) {
+    console.log(info.info.name, info.info.version);
+    // setQuery(info.info.name + info.info.name);
+  }
 
   return (
     <>
@@ -27,9 +31,15 @@ function App() {
         {loading && <p>loading...</p>}
         {error && <p>error: {error}</p>}
       </div>
-      <div className="">
+      <div className="border">
         {data.map((info) => (
-          <li key={info.name}>
+          <li
+            key={info.name}
+            onClick={() => updateInput({ info })}
+            style={{
+              cursor: "pointer",
+            }}
+          >
             <span>{info.name}</span> - <span>v{info.version}</span>
           </li>
         ))}

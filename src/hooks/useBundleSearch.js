@@ -8,7 +8,7 @@ export function useBundleSearch(q) {
     // Removing the whitespace
     const query = (q || "").trim();
     // Checking the query if it is empty return with the deafult value
-    if (!query) {
+    if (query.length < 2) {
       setData([]);
       setLoading(false);
       setError(null);
