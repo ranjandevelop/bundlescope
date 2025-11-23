@@ -14,7 +14,7 @@ const BundleScope = () => {
         <div class="items-center justify-center rounded-full text-sm font-medium whitespace-nowrap shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] inline-flex bg-white text-neutral-700 px-2.5 py-1">
           Introducing BundleScope
         </div>
-        <div class="bg-gradient-to-b from-slate-800 to-slate-600 bg-clip-text text-3xl font-semibold text-transparent lg:text-5xl mt-4 sm:mx-auto sm:w-2/3 lg:mt-6 lg:leading-tight xl:w-3/5">
+        <div class="bg-linear-to-b from-slate-800 to-slate-600 bg-clip-text text-3xl font-semibold text-transparent lg:text-5xl mt-4 sm:mx-auto sm:w-2/3 lg:mt-6 lg:leading-tight xl:w-3/5">
           Find the Scope of Your Bundle
         </div>
         <div class="mt-8 flex w-full flex-col gap-y-2 sm:w-1/2 md:w-2/5 lg:mt-12 lg:flex-row lg:items-start lg:gap-x-4 lg:gap-y-0 xl:w-2/5">
@@ -41,7 +41,7 @@ const BundleScope = () => {
               </svg>
             </div>
             {loading ? (
-              <div class="z-10 border rounded-lg shadow-lg w-[100%] lg:w-44">
+              <div class="z-10 border rounded-lg shadow-lg w-full lg:w-44">
                 <p>Searching...</p>
               </div>
             ) : query.length < 2 ? (

@@ -1,7 +1,8 @@
 const Footer = () => {
   return (
     <>
-      <section class="pt-12 lg:pt-16 bg-gradient-to-b from-[#E9FFFE] via-[#F6FFE7] to-white pb-12 lg:pb-16">
+      {/* TODO: update the footer and add the extra buttons in this */}
+      {/* <section class="pt-12 lg:pt-16 bg-gradient-to-b from-[#E9FFFE] via-[#F6FFE7] to-white pb-12 lg:pb-16">
         <div class="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col items-center">
           <div class="items-center justify-center rounded-full text-sm font-medium whitespace-nowrap shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] inline-flex bg-white text-neutral-700 px-2.5 py-1">
             Newsletter
@@ -59,7 +60,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-      </section>
+      </section> */}
       <div>
         Developed by <a href="https://ranjanprasad.in">RanjanPrasad</a>
       </div>
