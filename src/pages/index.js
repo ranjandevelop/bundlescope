@@ -1,4 +1,4 @@
 import Home from "./Home/Home";
-// import Category from "./Category/Category";
+import Package from "./Package/Package";
 
-export { Home };
+export { Home, Package };
