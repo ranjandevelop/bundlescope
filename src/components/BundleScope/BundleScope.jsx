@@ -30,6 +30,7 @@ const BundleScope = () => {
                 onChange={(e) => setQuery(e.target.value)}
                 className="font-medium w-full rounded-xl bg-transparent shadow-[0_2px_10px_0px_rgba(0,0,0,0.05)] text-sm placeholder:font-medium placeholder:text-sm text-neutral-700 focus-visible:outline-none focus:shadow-[0_0px_0px_2px_rgba(15,23,42,0.25),0_2px_10px_0px_rgba(0,0,0,0.05)] pl-10 pr-9 py-3 placeholder:text-neutral-300"
                 placeholder="NPM Package Name"
+                autoComplete="off"
               />
               <svg
                 className="absolute top-1/2 -translate-y-1/2 left-0 flex h-5 items-center text-neutral-500 transition-all group-hover:text-neutral-400 group-focus:text-neutral-500 ml-3"

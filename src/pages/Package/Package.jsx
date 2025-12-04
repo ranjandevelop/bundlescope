@@ -7,6 +7,7 @@ const Package = () => {
   const { pathname } = useLocation();
   const [name, setName] = useState("");
   const [version, setVersion] = useState("");
+  // const {}
 
   useEffect(() => {
     const temp = pathname.replace("/package/", "");
