@@ -2,11 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+import useBundleScope from "../../hooks/useBundleScope";
 
 const Package = () => {
   const { pathname } = useLocation();
   const [name, setName] = useState("");
   const [version, setVersion] = useState("");
+  const { packageData, loading, error } = useBundleScope({ name, version });
+  console.log(packageData, loading, error);
+
   // const {}
 
   useEffect(() => {
@@ -22,6 +26,13 @@ const Package = () => {
     <>
       <h1>{name},package.</h1>
       <h2>v{version}</h2>
+      {/* <span>
+        {packageData.map((d) => (
+          <>
+            <span>{d}</span>
+          </>
+        ))}
+      </span> */}
     </>
   );
 };
