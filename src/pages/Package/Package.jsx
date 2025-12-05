@@ -26,13 +26,6 @@ const Package = () => {
     <>
       <h1>{name},package.</h1>
       <h2>v{version}</h2>
-      {/* <span>
-        {packageData.map((d) => (
-          <>
-            <span>{d}</span>
-          </>
-        ))}
-      </span> */}
     </>
   );
 };
