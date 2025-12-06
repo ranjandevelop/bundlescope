@@ -8,8 +8,8 @@ const Home = () => {
   console.log(useParams());
   return (
     <Container>
-      <Notification />
-      <Header />
+      {/* <Notification /> */}
+      {/* <Header /> */}
       {/* <BundleScope /> */}
       <Outlet />
     </Container>

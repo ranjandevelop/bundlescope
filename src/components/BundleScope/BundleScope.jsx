@@ -12,37 +12,62 @@ const BundleScope = () => {
     // setQuery(info.info.name + info.info.name);
   }
   return (
-    <section className="py-16 lg:py-24">
-      <div className="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col items-center text-center">
-        <div className="items-center justify-center rounded-full text-sm font-medium whitespace-nowrap shadow-[0_2px_10px_0px_rgba(0,0,0,0.15)] inline-flex bg-white text-neutral-700 px-2.5 py-1">
-          Introducing BundleScope
-        </div>
-        <div className="bg-linear-to-b from-slate-800 to-slate-600 bg-clip-text text-3xl font-semibold text-transparent lg:text-5xl mt-4 sm:mx-auto sm:w-2/3 lg:mt-6 lg:leading-tight xl:w-3/5">
-          Find the Scope of Your Bundle
-        </div>
-        <div className="mt-8 flex w-full flex-col gap-y-2 sm:w-1/2 md:w-2/5 lg:mt-12 lg:flex-row lg:items-start lg:gap-x-4 lg:gap-y-0 xl:w-2/5">
-          <div className="flex w-full flex-col">
-            <div className="group relative rounded-xl border border-neutral-200 bg-white transition-all hover:bg-neutral-50 mb-1">
+    <>
+      {/* Content */}
+      <div className="h-screen flex flex-col pb-6 bg-neutral-900">
+        <div className="h-full flex flex-col justify-center">
+          <div className="-mt-20 max-w-4xl w-full text-center mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-4 flex justify-center items-center">
+              {/* Logo */}
+              <a
+                className="flex-none rounded-md text-xl inline-block font-semibold focus:outline-hidden focus:opacity-80 text-amber-50"
+                href="../templates.html"
+                aria-label="BundleScope"
+              >
+                BundleScope
+              </a>
+              {/* End Logo */}
+
+              <div className="ms-2"></div>
+            </div>
+
+            <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl dark:text-white">
+              Find the Scope of Your Bundle
+            </h1>
+            {/* <p className="mt-3 text-gray-600 dark:text-neutral-400"></p> */}
+          </div>
+
+          {/* Search */}
+          <div className="mt-10 max-w-2xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative">
               <input
-                id="email"
-                name="email"
                 type={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="font-medium w-full rounded-xl bg-transparent shadow-[0_2px_10px_0px_rgba(0,0,0,0.05)] text-sm placeholder:font-medium placeholder:text-sm text-neutral-700 focus-visible:outline-none focus:shadow-[0_0px_0px_2px_rgba(15,23,42,0.25),0_2px_10px_0px_rgba(0,0,0,0.05)] pl-10 pr-9 py-3 placeholder:text-neutral-300"
+                className="p-3 sm:p-4 block w-full rounded-full sm:text-sm disabled:opacity-50 disabled:pointer-events-none bg-neutral-900 border border-neutral-700 text-neutral-400 placeholder-neutral-500"
                 placeholder="NPM Package Name"
-                autoComplete="off"
               />
-              <svg
-                className="absolute top-1/2 -translate-y-1/2 left-0 flex h-5 items-center text-neutral-500 transition-all group-hover:text-neutral-400 group-focus:text-neutral-500 ml-3"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-                data-slot="icon"
-              >
-                <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
-                <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
-              </svg>
+              <div className="absolute top-1/2 end-2 -translate-y-1/2">
+                <button
+                  type="button"
+                  className="size-10 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-500 hover:text-gray-800 focus:outline-hidden focus:text-gray-800 bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-neutral-400 dark:bg-neutral-800 dark:hover:text-white dark:focus:text-white"
+                >
+                  <svg
+                    className="shrink-0 size-4 text-gray-400 dark:text-white/60"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.3-4.3" />
+                  </svg>
+                </button>
+              </div>
             </div>
             {loading ? (
               <div className="z-10 border rounded-lg shadow-lg w-full lg:w-44">
@@ -51,13 +76,13 @@ const BundleScope = () => {
             ) : query.length < 2 ? (
               <div></div>
             ) : (
-              <div className="z-10 border rounded-lg shadow-lgw-[100%]">
+              <div className="z-10 border rounded-lg shadow-lg w-full">
                 <ul className="p-2 text-sm">
                   {data.map((info) => (
                     <li>
                       <Link
                         to={`/package/${info.name}/${info.version}`}
-                        className="inline-flex items-center w-full p-2 hover:bg-slate-100 hover:text-heading rounded"
+                        className="inline-flex items-center w-full p-2 hover:bg-slate-100 hover:text-heading rounded text-amber-50"
                       >
                         {info.name} v{info.version}
                       </Link>
@@ -67,31 +92,23 @@ const BundleScope = () => {
               </div>
             )}
           </div>
-          {/* TODO: Add the NPM search btn which will work dynamically. */}
-          {/* <a
-            href="#"
-            title="Get started"
-            class="items-center justify-center whitespace-nowrap text-sm font-medium transition-all focus:shadow-[0_0px_0px_2px_rgba(15,23,42,0.25),0_2px_10px_0px_rgba(0,0,0,0.05)] shadow-[0_2px_10px_0px_rgba(0,0,0,0.05)] bg-slate-900 text-white hover:bg-slate-800 disabled:bg-slate-900/30 disabled:text-slate-50/70 px-5 py-3 rounded-xl flex"
-          >
-            npm search
-            <svg
-              class="shrink-0 ml-3 h-5"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              aria-hidden="true"
-              data-slot="icon"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M12.97 3.97a.75.75 0 0 1 1.06 0l7.5 7.5a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06l6.22-6.22H3a.75.75 0 0 1 0-1.5h16.19l-6.22-6.22a.75.75 0 0 1 0-1.06Z"
-                clip-rule="evenodd"
-              />
-            </svg>
-          </a> */}
+          {/* End Search */}
         </div>
+
+        <footer className="mt-auto max-w-4xl text-center mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-xs text-gray-600 dark:text-neutral-500">
+            © 2025 RanjanDevelop.
+          </p>
+        </footer>
       </div>
-    </section>
+      {/* End Content */}
+
+      <section className="py-6 hidden lg:block">
+        <div className="max-w-7xl mx-auto px-4 xl:px-0 flex flex-col items-center text-center">
+          <span class="text-9xl">Bundle Scope</span>
+        </div>
+      </section>
+    </>
   );
 };
 
