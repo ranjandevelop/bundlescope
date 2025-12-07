@@ -9,10 +9,12 @@ const Package = () => {
   const [name, setName] = useState("");
   const [version, setVersion] = useState("");
   const { packageData, loading, error } = useBundleScope({ name, version });
-  console.log(packageData, loading, error);
+
+  const [monthlyDownloads, setMonthlyDownloads] = useState("");
+  console.log("data", packageData, loading, error);
 
   // const {}
-
+  // Set the bundle name
   useEffect(() => {
     const temp = pathname.replace("/package/", "");
     const temp1 = temp.split("/");
@@ -21,6 +23,15 @@ const Package = () => {
     setName(name1);
     setVersion(version1);
   }, [pathname]);
+
+  useEffect(() => {
+    if (!name) return;
+
+    fetch(`https://api.npmjs.org/downloads/point/last-month/${name}`)
+      .then((response) => response.json())
+      .then((data) => setMonthlyDownloads(data.downloads))
+      .catch((error) => console.log(error));
+  }, [name]);
 
   return (
     <>
@@ -47,12 +58,12 @@ const Package = () => {
               <div className="p-4 md:p-5">
                 <div className="flex items-center gap-x-2">
                   <p className="text-xs uppercase text-gray-500 dark:text-neutral-500">
-                    downloads
+                    Last Month Downloads
                   </p>
                 </div>
                 <div className="mt-1 flex items-center gap-x-2">
                   <h3 className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                    72,540
+                    {monthlyDownloads}
                   </h3>
                 </div>
               </div>
@@ -69,7 +80,7 @@ const Package = () => {
 
                 <div className="mt-1 flex items-center gap-x-2">
                   <h3 className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                    29.4%
+                    {packageData.unpackedSize} KB
                   </h3>
                 </div>
               </div>
@@ -80,13 +91,13 @@ const Package = () => {
               <div className="p-4 md:p-5">
                 <div className="flex items-center gap-x-2">
                   <p className="text-xs uppercase text-gray-500 dark:text-neutral-500">
-                    tarball
+                    fileCount
                   </p>
                 </div>
 
                 <div className="mt-1 flex items-center gap-x-2">
                   <h3 className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                    56.8%
+                    {packageData.fileCount}
                   </h3>
                 </div>
               </div>
@@ -98,13 +109,13 @@ const Package = () => {
               <div className="p-4 md:p-5">
                 <div className="flex items-center gap-x-2">
                   <p className="text-xs uppercase text-gray-500 dark:text-neutral-500">
-                    Pageviews
+                    license
                   </p>
                 </div>
 
                 <div className="mt-1 flex items-center gap-x-2">
                   <h3 className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                    92,913
+                    {packageData.license}
                   </h3>
                 </div>
               </div>
@@ -113,7 +124,7 @@ const Package = () => {
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {/* Card */}
-            <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+            {/* <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
               <div className="p-4 md:p-5">
                 <div className="flex items-center gap-x-2">
                   <p className="text-xs uppercase text-gray-500 dark:text-neutral-500">
@@ -171,11 +182,11 @@ const Package = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* End Card */}
 
             {/* Card */}
-            <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+            {/* <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
               <div className="p-4 md:p-5">
                 <div className="flex items-center gap-x-2">
                   <p className="text-xs uppercase text-gray-500 dark:text-neutral-500">
@@ -189,11 +200,11 @@ const Package = () => {
                   </h3>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* End Card */}
 
             {/* Card */}
-            <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+            {/* <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
               <div className="p-4 md:p-5">
                 <div className="flex items-center gap-x-2">
                   <p className="text-xs uppercase text-gray-500 dark:text-neutral-500">
@@ -225,11 +236,11 @@ const Package = () => {
                   </span>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* End Card */}
 
             {/* Card */}
-            <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+            {/* <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
               <div className="p-4 md:p-5">
                 <div className="flex items-center gap-x-2">
                   <p className="text-xs uppercase text-gray-500 dark:text-neutral-500">
@@ -243,15 +254,15 @@ const Package = () => {
                   </h3>
                 </div>
               </div>
-            </div>
+            </div> */}
             {/* End Card */}
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 border">
-            {/* Card */}
-            <div className="p-4 md:p-5 min-h-102.5 flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
-              {/* Header */}
-              {/* <div className="flex flex-wrap justify-between items-center gap-2">
+          {/* <div className="grid lg:grid-cols-2 gap-4 sm:gap-6 border"> */}
+          {/* Card */}
+          {/* <div className="p-4 md:p-5 min-h-102.5 flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700"> */}
+          {/* Header */}
+          {/* <div className="flex flex-wrap justify-between items-center gap-2">
                 <div>
                   <h2 className="text-sm text-gray-500 dark:text-neutral-500">
                     Income
@@ -282,16 +293,16 @@ const Package = () => {
                   </span>
                 </div>
               </div> */}
-              {/* End Header */}
+          {/* End Header */}
 
-              <div id="hs-multiple-bar-charts"></div>
-            </div>
-            {/* End Card */}
+          {/* <div id="hs-multiple-bar-charts"></div> */}
+          {/* </div> */}
+          {/* End Card */}
 
-            {/* Card */}
-            {/* <div className="p-4 md:p-5 min-h-102.5 flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700"> */}
-            {/* Header */}
-            {/* <div className="flex flex-wrap justify-between items-center gap-2">
+          {/* Card */}
+          {/* <div className="p-4 md:p-5 min-h-102.5 flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700"> */}
+          {/* Header */}
+          {/* <div className="flex flex-wrap justify-between items-center gap-2">
                 <div>
                   <h2 className="text-sm text-gray-500 dark:text-neutral-500">
                     Visitors
@@ -322,12 +333,12 @@ const Package = () => {
                   </span>
                 </div>
               </div> */}
-            {/* End Header */}
+          {/* End Header */}
 
-            {/* <div id="hs-single-area-chart"></div> */}
-            {/* </div> */}
-            {/* End Card */}
-          </div>
+          {/* <div id="hs-single-area-chart"></div> */}
+          {/* </div> */}
+          {/* End Card */}
+          {/* </div> */}
         </div>
       </div>
       {/* End Content */}

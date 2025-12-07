@@ -21,7 +21,19 @@ export default function useBundleScope({ name, version }) {
         if (!response.ok) throw new Error("HTTP Error" + response.status);
         return response.json();
       })
-      .then((data) => setPackageData(data))
+      .then((data) => {
+        const packageData = {
+          name: data?.name,
+          version: data?.version,
+          homepage: data?.homepage,
+          unpackedSize: Math.floor(data?.dist.unpackedSize / 1024),
+          github: data?.repository.url,
+          tarball: data?.dist.tarball,
+          fileCount: data?.dist.fileCount,
+          license: data?.license,
+        };
+        setPackageData(packageData);
+      })
       .catch((error) => setError(error.message || "Something went wrong."))
       .finally(() => setLoading(false));
   }, [name, version]);
