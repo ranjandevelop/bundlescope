@@ -1,8 +1,11 @@
-// Components
-
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
+
+// Hooks
 import useBundleScope from "../../hooks/useBundleScope";
+
+// GraphChart
+import Apexcharts from "../../components/ReactApexChart/Apexcharts";
 
 const Package = () => {
   const { pathname } = useLocation();
@@ -64,7 +67,7 @@ const Package = () => {
       <header className="sticky top-0 inset-x-0 flex lg:ps-65 flex-wrap md:justify-start md:flex-nowrap z-48 w-full bg-white border-b border-gray-200 text-sm py-2.5 dark:bg-neutral-800 dark:border-neutral-700">
         <nav className="px-4 sm:px-6 flex basis-full items-center w-full mx-auto">
           <div className="me-5 lg:me-0 flex items-center">
-            <div className="w-full flex items-center justify-end ms-auto md:justify-between gap-x-1 md:gap-x-3 ">
+            <div className="w-full flex items-center justify-end ms-auto md:justify-between gap-x-1 md:gap-x-3">
               <span className="py-4 ps-10 pe-16 block w-full bg-white border-gray-200 rounded-lg text-sm focus:outline-hidden focus:border-blue-500 focus:ring-blue-500 checked:border-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-400 dark:placeholder:text-neutral-400 dark:focus:ring-neutral-600 border">
                 {name} @ {version}
               </span>
@@ -158,7 +161,8 @@ const Package = () => {
                   </p>
                 </div>
               </div>
-              <div id="hs-multiple-bar-charts"></div>
+
+              <Apexcharts mode="light" />
             </div>
 
             {/* BundlePhobia */}
