@@ -217,7 +217,7 @@ const Package = () => {
 
               {/* Github */}
               <a
-                href={packageData.github.replace("git+", "")}
+                href={packageData.github}
                 target="_blank"
                 className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700 hover:bg-neutral-900"
               >

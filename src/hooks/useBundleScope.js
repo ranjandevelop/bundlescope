@@ -27,7 +27,7 @@ export default function useBundleScope({ name, version }) {
           version: data?.version,
           homepage: data?.homepage,
           unpackedSize: Math.floor(data?.dist.unpackedSize / 1024),
-          github: data?.repository.url,
+          github: data?.repository.url.replace("git+", ""),
           tarball: data?.dist.tarball,
           fileCount: data?.dist.fileCount,
           license: data?.license,
