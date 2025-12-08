@@ -195,37 +195,45 @@ const Package = () => {
                 </div>
               </div>
 
-              {/* Card */}
-              <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+              {/* Home Page */}
+              <a
+                href={packageData.homepage}
+                target="_blank"
+                className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700 hover:bg-neutral-900"
+              >
                 <div className="p-4 md:p-5">
                   <div className="flex items-center gap-x-2">
                     <p className="text-xs uppercase text-gray-500 dark:text-neutral-500">
-                      HomePage
+                      Visit
                     </p>
                   </div>
                   <div className="mt-1 flex items-center gap-x-2">
                     <h3 className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                      56.8%
+                      Home Page
                     </h3>
                   </div>
                 </div>
-              </div>
+              </a>
 
-              {/* Card */}
-              <div className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700">
+              {/* Github */}
+              <a
+                href={packageData.github.replace("git+", "")}
+                target="_blank"
+                className="flex flex-col bg-white border border-gray-200 shadow-2xs rounded-xl dark:bg-neutral-800 dark:border-neutral-700 hover:bg-neutral-900"
+              >
                 <div className="p-4 md:p-5">
                   <div className="flex items-center gap-x-2">
                     <p className="text-xs uppercase text-gray-500 dark:text-neutral-500">
-                      Pageviews
+                      Visit
                     </p>
                   </div>
                   <div className="mt-1 flex items-center gap-x-2">
                     <h3 className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                      92,913
+                      Github
                     </h3>
                   </div>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
         </div>
