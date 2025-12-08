@@ -13,7 +13,7 @@ const Package = () => {
   const [version, setVersion] = useState("");
   const { packageData, loading, error } = useBundleScope({ name, version });
   const [monthlyDownloads, setMonthlyDownloads] = useState("");
-  const [weeklyDownloads, setWeeklyDownloads] = useState("");
+  const [yearlyDownloads, setYearlyDownloads] = useState("");
 
   const [minified, setMinified] = useState({});
 
@@ -42,9 +42,9 @@ const Package = () => {
   useEffect(() => {
     if (!name) return;
 
-    fetch(`https://api.npmjs.org/downloads/point/last-week/${name}`)
+    fetch(`https://api.npmjs.org/downloads/point/last-year/${name}`)
       .then((response) => response.json())
-      .then((data) => setWeeklyDownloads(data.downloads))
+      .then((data) => setYearlyDownloads(data.downloads))
       .catch((error) => console.log(error));
   }, [name]);
 
@@ -154,10 +154,10 @@ const Package = () => {
               <div className="flex flex-wrap justify-between items-center gap-2">
                 <div>
                   <h2 className="text-sm text-gray-500 dark:text-neutral-500">
-                    Downloads
+                    Last Year Downloads
                   </h2>
                   <p className="text-xl sm:text-2xl font-medium text-gray-800 dark:text-neutral-200">
-                    {monthlyDownloads}
+                    {yearlyDownloads}
                   </p>
                 </div>
               </div>

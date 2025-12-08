@@ -76,13 +76,13 @@ const BundleScope = () => {
             ) : query.length < 2 ? (
               <div></div>
             ) : (
-              <div className="z-10 border rounded-lg shadow-lg w-full">
+              <div className="z-10 border rounded-lg shadow-lg w-full bg-neutral-800">
                 <ul className="p-2 text-sm">
                   {data.map((info) => (
                     <li>
                       <Link
                         to={`/package/${info.name}/${info.version}`}
-                        className="inline-flex items-center w-full p-2 hover:bg-slate-100 hover:text-heading rounded text-amber-50"
+                        className="inline-flex items-center w-full p-2 hover:bg-neutral-900 hover:text-heading rounded text-amber-50"
                       >
                         {info.name} v{info.version}
                       </Link>
