@@ -162,7 +162,7 @@ const Package = () => {
                 </div>
               </div>
 
-              <Apexcharts mode="light" />
+              <Apexcharts mode="light" name={name} />
             </div>
 
             {/* BundlePhobia */}
@@ -242,12 +242,6 @@ const Package = () => {
           </div>
         </div>
       </div>
-      {/* End Content */}
-
-      {/* JS Implementing Plugins */}
-
-      {/* <script src="../assets/vendor/preline/dist/index.js"></script>
-    <script src="../assets/vendor/lodash/lodash.min.js"></script>*/}
     </>
   );
 };

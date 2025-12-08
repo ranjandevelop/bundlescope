@@ -1,26 +1,27 @@
+import { useEffect, useState } from "react";
 import ReactApexChart from "react-apexcharts";
 
-const Apexcharts = ({ mode = "light" }) => {
+const Apexcharts = ({ mode = "light", name }) => {
+  const [monthlyDownloads, setMonthlyDownloads] = useState(() =>
+    new Array(12).fill(0)
+  );
+  console.log(monthlyDownloads);
   const isDark = mode === "dark";
-
-  const series = [
-    {
-      name: "Chosen Period",
-      data: [
-        23000, 44000, 55000, 57000, 56000, 61000, 58000, 63000, 60000, 66000,
-        34000, 78000,
-      ],
-    },
-    {
-      name: "Last Period",
-      data: [
-        17000, 76000, 85000, 101000, 98000, 87000, 105000, 91000, 114000, 94000,
-        67000, 66000,
-      ],
-    },
+  // Monthly Lables
+  const monthLabels = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
-
-  // TODO: Animation
   const options = {
     chart: {
       type: "bar",
@@ -51,20 +52,7 @@ const Apexcharts = ({ mode = "light" }) => {
       colors: ["transparent"],
     },
     xaxis: {
-      categories: [
-        "January",
-        "February",
-        "March",
-        "April",
-        "May",
-        "June",
-        "July",
-        "August",
-        "September",
-        "October",
-        "November",
-        "December",
-      ],
+      categories: monthLabels,
       axisBorder: { show: false },
       axisTicks: { show: false },
       crosshairs: { show: false },
@@ -76,7 +64,7 @@ const Apexcharts = ({ mode = "light" }) => {
           fontWeight: 400,
         },
         offsetX: -2,
-        formatter: (title) => title.slice(0, 3),
+        formatter: (title) => title.slice(0, 3), // Jan, Feb, ...
       },
     },
     yaxis: {
@@ -103,7 +91,11 @@ const Apexcharts = ({ mode = "light" }) => {
     },
     tooltip: {
       y: {
-        formatter: (value) => `$${value >= 1000 ? `${value / 1000}k` : value}`,
+        // downloads, not money 🙂
+        formatter: (value) =>
+          `${
+            value >= 1000 ? `${(value / 1000).toFixed(1)}k` : value
+          } downloads`,
       },
     },
     responsive: [
@@ -152,6 +144,28 @@ const Apexcharts = ({ mode = "light" }) => {
       },
     ],
   };
+  const series = [
+    {
+      name: "Downloads",
+      data: monthlyDownloads,
+    },
+  ];
+
+  // get the monthly Data
+  useEffect(() => {
+    fetch(`https://api.npmjs.org/downloads/range/last-year/${name}`)
+      .then((response) => response.json())
+      .then((data) => {
+        const monthly = new Array(12).fill(0);
+
+        data.downloads.forEach(({ day, downloads }) => {
+          const monthIndex = new Date(day).getMonth(); // 0-11
+          monthly[monthIndex] += downloads;
+        });
+
+        setMonthlyDownloads(monthly);
+      });
+  }, [name]);
 
   return (
     <>
