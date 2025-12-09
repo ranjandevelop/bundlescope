@@ -6,11 +6,6 @@ const BundleScope = () => {
   const [query, setQuery] = useState("");
   const { data, loading, error } = useBundleSearch(query);
   console.log(data);
-
-  function updateInput(info) {
-    console.log(info.info.name, info.info.version);
-    // setQuery(info.info.name + info.info.name);
-  }
   return (
     <>
       {/* Content */}
@@ -34,7 +29,6 @@ const BundleScope = () => {
             <h1 className="text-3xl font-bold text-gray-800 sm:text-4xl dark:text-white">
               Find the Scope of Your Bundle
             </h1>
-            {/* <p className="mt-3 text-gray-600 dark:text-neutral-400"></p> */}
           </div>
 
           {/* Search */}
