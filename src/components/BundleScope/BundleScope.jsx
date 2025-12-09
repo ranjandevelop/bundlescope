@@ -70,13 +70,13 @@ const BundleScope = () => {
               </div>
             </div>
             {loading ? (
-              <div className="z-10 border rounded-lg shadow-lg w-full lg:w-44">
-                <p>Searching...</p>
+              <div className="z-10 rounded-lg shadow-lg w-full lg:w-44">
+                <p className="text-amber-50">Searching...</p>
               </div>
             ) : query.length < 2 ? (
               <div></div>
             ) : (
-              <div className="z-10 border rounded-lg shadow-lg w-full bg-neutral-800">
+              <div className="z-10 rounded-lg shadow-lg w-full bg-neutral-800">
                 <ul className="p-2 text-sm">
                   {data.map((info) => (
                     <li>
@@ -97,7 +97,7 @@ const BundleScope = () => {
 
         <footer className="mt-auto max-w-4xl text-center mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-xs text-gray-600 dark:text-neutral-500">
-            © 2025 RanjanDevelop.
+            © 2025 <a href="https://ranjanprasad.in">RanjanDevelop.</a>
           </p>
         </footer>
       </div>

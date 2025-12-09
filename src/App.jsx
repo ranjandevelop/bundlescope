@@ -12,6 +12,7 @@ function App() {
         <Route path="/" element={<Home />}>
           <Route index element={<BundleScope />} />
           <Route path="/package/*" element={<Package />} />
+          <Route path="*" element={<Home />} />
         </Route>
       </Routes>
     </BrowserRouter>
