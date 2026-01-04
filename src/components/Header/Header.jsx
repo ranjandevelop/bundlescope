@@ -1,10 +1,10 @@
-import logo from "/src/assets/react.svg";
+// import logo from "/src/assets/bundlescope.png";
 const Header = () => {
   return (
     <header className="py-4">
       <div className="max-w-7xl mx-auto px-4 xl:px-0 flex items-center justify-between gap-x-4 lg:grid lg:grid-cols-[1fr_auto_1fr] lg:justify-stretch lg:gap-x-12">
         <a href="/" title="Home">
-          <img className="h-8" src={logo} alt="Logo" />
+          {/* <img className="h-8" src={logo} alt="Logo" /> */}
         </a>
         <nav className="hidden lg:block">
           <ul className="flex items-center">

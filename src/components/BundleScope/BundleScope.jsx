@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 // Custom Hooks
 import { useState } from "react";
 import { useBundleSearch } from "../../hooks/useBundleSearch";
+// log
+import logo from "../../assets/bundlescope.png";
 const BundleScope = () => {
   const [query, setQuery] = useState("");
   const { data, loading, error } = useBundleSearch(query);
@@ -19,7 +21,7 @@ const BundleScope = () => {
                 href="../templates.html"
                 aria-label="BundleScope"
               >
-                BundleScope
+                <img src={logo} alt="BundleScope" className="w-20" />
               </a>
               {/* End Logo */}
 
